@@ -1,5 +1,5 @@
 // Load html contents
-function loadHtml(id, filename) {
+function loadHtml(id, filename, click) {
     console.log(`div id: ${id}, filename: ${filename}`);
 
     let xhttp;
@@ -19,7 +19,7 @@ function loadHtml(id, filename) {
         xhttp.open("GET", `templates/${file}`, true);
         xhttp.send();
         // Fold nav bar when it small
-        if (windows_size.matches) { btn.click(); }
+        if (windows_size.matches && click == 1) { btn.click(); }
         return;
     } else {
         console.log(`no file`);
