@@ -1,0 +1,9 @@
+.hide-on-phone {
+  display: block;
+}
+
+@media screen and (max-width: 960px) {
+  .hide-on-phone {
+    display: none;
+  }
+}
