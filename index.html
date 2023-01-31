@@ -20,46 +20,78 @@
   <!-- JQuary AJAX -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"> </script>
   <!-- CSS from self design -->
-  <link href='css/mystyle.css' rel='stylesheet' />
+  <link href="css/mystyle.css" rel='stylesheet' />
   <!-- JS form self design -->
   <script src="js/myindex.js"></script>
 </head>
 
-<body class="d-flex flex-column min-vh-100" onload='loadHtml("template", "home.html", 0)'>
-
+<body class="d-flex flex-column min-vh-100">
   <!-- Load navigation bar in JQuary way -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" style="font-family: Noto Serif TC;">This is Fuan Ho</a>
-      <button class="navbar-toggler" id="nav-btn" type="button" data-bs-toggle="collapse"
-        data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false"
-        aria-label="Toggle navigation">
+      <a class="navbar-brand">This is Fuan Ho</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarColor01">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#" onclick="loadHtml('template', 'home.html', 1)">Home</a>
+            <a class="nav-link active" aria-current="page" href="#" onclick="loadHtml('template', 'home.html')">Home</a>
           </li>
-          <!-- <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li> -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="dropdown-demo" data-bs-auto-close="outside" href="#" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Study
+            </a>
+            <ul class="dropdown-menu">
+              <li class="dropend">
+                <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" href="#">Linux</a>
+                <ul class="dropdown-menu">
+                  <li><a href="#" class="dropdown-item"
+                      onclick="loadHackmd('template', 'https://hackmd.io/@Fuan/S1AfvoMCc');foldDeopdown()">WSL2 mount
+                      webdav using fstab</a></li>
+                  <li><a href="#" class="dropdown-item"
+                      onclick="loadHackmd('template', 'https://hackmd.io/@Fuan/BJqnffLYK');foldDeopdown()">Rime 注音輸入法
+                      Ubuntu 20.04/18.04 安裝</a></li>
+                  <li><a href="#" class="dropdown-item"
+                      onclick="loadHackmd('template', 'https://hackmd.io/@Fuan/BJE3qc2YY');foldDeopdown()">How to setup
+                      Qt and OpenCV 3.4.xx on Ubuntu 20.04</a></li>
+                </ul>
+              </li>
+              <li class="dropend">
+                <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" href="#">Programing</a>
+                <ul class="dropdown-menu">
+                  <li><a href="#" class="dropdown-item"
+                      onclick="loadHackmd('template', 'https://hackmd.io/@Fuan/H15x8JPyF');foldDeopdown()">Regular expressions</a></li>
+                </ul>
+              </li>
+              <!-- <li><a class="dropdown-item" href="#">Programing</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="loadHtml('template', 'Project.html')">Project</a>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
 
+
   <!-- Load contents from self design JS script -->
-  <div class="mt-auto container-fluid text-around px-5">
-    <div id='template'>
-    </div>
+  <div class="container-fluid p-0" id="template">
+
   </div>
+  <script>
+    $(document).ready(function () {
+      $("#template").load("templates/home.html");
+      $("#template").addClass("mt-auto");
+    })
+  </script>
 
   <!-- footer-->
   <div class="mt-auto">

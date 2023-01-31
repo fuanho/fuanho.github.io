@@ -1,27 +1,22 @@
-// Load html contents
-function loadHtml(id, filename, click) {
-    console.log(`div id: ${id}, filename: ${filename}`);
-
-    let xhttp;
-    let element = document.getElementById(id);
-    let btn = document.getElementById('nav-btn');
-    var windows_size = window.matchMedia("(max-width: 992px)");
-    let file = filename;
-
-    if (file) {
-        console.log(`file`);
-        xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.status == 200) { element.innerHTML = this.responseText; }
-            // Show it once page not found
-            if (this.status == 404) { element.innerHTML = "<h1>Page not found.<h1/>"; }
-        }
-        xhttp.open("GET", `templates/${file}`, true);
-        xhttp.send();
-        // Fold nav bar when it small
-        if (windows_size.matches && click == 1) { btn.click(); }
-        return;
-    } else {
-        console.log(`no file`);
-    }
+const foldDeopdown = () => {
+    const myNode = document.querySelector('.dropdown-toggle');
+    const loki = new bootstrap.Dropdown(myNode); // 建構式
+    loki.hide();
 }
+
+const loadHackmd = (id, link) => {
+    $(`#${id}`).html(`<iframe class="w-100" src="${link}" scrolling="hide" style="height: 100vh"></iframe>`);
+}
+
+const loadHtml = (id, filename) => {
+    $(`#${id}`).load(`templates/${filename}`);
+    if (filename == 'home.html') { $(`#${id}`).addClass("mt-auto"); }
+    else { $(`#${id}`).removeClass("mt-auto"); }
+}
+
+$(window).scroll(function() {
+    var pageH = $('#page').height() - $(this).height();
+    var pageT = this.scrollY - $('#page').offset().top;
+    
+    $('#block').scrollTop(pageT / pageH * ($('#blockLength').height() - $(this).height()));
+});

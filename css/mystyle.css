@@ -1,9 +1,21 @@
+@media (max-width: 992px) {
+  .dropdown-item::before {
+    transform: rotate(-90deg);
+  }
+}
+
 .hide-on-phone {
   display: block;
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 992px) {
   .hide-on-phone {
     display: none;
+  }
+}
+
+@media (max-width: 992px) {
+  .img-resize {
+    width: 100%;
   }
 }
